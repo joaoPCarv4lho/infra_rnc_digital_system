@@ -26,7 +26,7 @@ services:
       - db
 
   backend:
-    image: luizmario/backendend_rnc_digital_system:latest
+    image: luizmario/backend_rnc_digital_system:latest
     ports:
       - "8000:8000"
     networks:

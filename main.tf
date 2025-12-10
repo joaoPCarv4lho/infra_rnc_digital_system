@@ -80,7 +80,7 @@ resource "aws_key_pair" "keypair" {
 
 
 resource "aws_instance" "servidor" {
-  ami = "ami-020cba7c55df1f615"
+  ami = "ami-0c398cb65a93047f2" # Ubuntu Server 22.04 LTS (HVM), SSD Volume Type - us-east-1
   instance_type = "t3.micro"
   user_data = file("user_data.sh")
   key_name = aws_key_pair.keypair.key_name
@@ -109,11 +109,6 @@ resource "aws_instance" "servidor" {
   provisioner "file" {
     source      = "frontend.env"
     destination = "/opt/app/frontend.env"
-  }
-
-  provisioner "file" {
-    source      = "pgadmin.env"
-    destination = "/opt/app/pgadmin.env"
   }
   
   provisioner "file" {
