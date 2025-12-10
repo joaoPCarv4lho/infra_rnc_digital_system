@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:16
+    container_name: banco
+    restart: always
+    env_file:
+      - ./db.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - project-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    env_file:
+      - ./pgadmin.env
+    ports:
+      - "8085:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - project-network
+    depends_on:
+      - db
+
+  backend:
+    image: luizmario/backendend_rnc_digital_system:latest
+    ports:
+      - "8000:8000"
+    networks:
+      - project-network
+    depends_on:
+      - db
+    env_file:
+      - ./backend.env 
+  
+  frontend:
+    image: luizmario/frontend_rnc_digital_system:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - project-network
+    depends_on:
+      - backend
+    env_file:
+      - ./frontend.env
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  project-network:

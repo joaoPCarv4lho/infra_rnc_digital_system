@@ -1,0 +1,8 @@
+pgadmin.env
+frontend.env
+backend.env
+db.env
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
