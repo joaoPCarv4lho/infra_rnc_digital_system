@@ -81,7 +81,7 @@ resource "aws_key_pair" "keypair" {
 
 resource "aws_instance" "servidor" {
   ami = "ami-0c398cb65a93047f2" # Ubuntu Server 22.04 LTS (HVM), SSD Volume Type - us-east-1
-  instance_type = "t3.micro"
+  instance_type = "t2.small"
   user_data = file("user_data.sh")
   key_name = aws_key_pair.keypair.key_name
   vpc_security_group_ids = [aws_security_group.securitygroup.id]

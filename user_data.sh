@@ -53,7 +53,7 @@ cd /opt/app
 
 # --- Baixa o arquivo docker-compose ---
 curl -o docker-compose.yml \
-  https://raw.githubusercontent.com/joaoPCarv4lho/infra_rnc_digital_system/main/docker-compose.yml
+  https://raw.githubusercontent.com/joaoPCarv4lho/infra_rnc_digital_system/main/docker-compose.yaml
 
 # --- Inicia containers automaticamente ---
 docker compose up -d
