@@ -1,3 +1,8 @@
+variable "ssh_cidr" {
+  description = "CIDR autorizado para SSH (ex: 200.1.2.3/32)"
+  type        = string
+}
+
 provider "aws" {
   region = "us-east-1"
 
@@ -29,22 +34,6 @@ resource "aws_security_group" "securitygroup" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Acesso HTTPS"
-  }
-
-  ingress {
-    from_port   = 5432
-    to_port     = 5432
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "Porta do PostgreSQL"
-  }
-
-  ingress {
-    from_port   = 8085
-    to_port     = 8085
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "Porta do pgadmin"
   }
 
   ingress {
